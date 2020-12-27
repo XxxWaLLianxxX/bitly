@@ -19,7 +19,7 @@ def get_shorten_link(token, url):
 
 def count_clicks(token, bitlink):
     parsed_bitlink = urlparse(bitlink)
-    bitlink = parsed_bitlink.netloc + parsed_bitlink.path
+    bitlink = "{domen}{path}".format(domen=parsed_bitlink.netloc, path=parsed_bitlink.path)
     bitly = "https://api-ssl.bitly.com/v4/bitlinks/{bitlink}/clicks/summary".format(
         bitlink=bitlink)
     headers = {"Authorization": token}
