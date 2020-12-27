@@ -12,8 +12,8 @@ def get_shorten_link(token, url):
     payload = {"long_url": url}
     response = requests.post(bitly, headers=headers, json=payload)
     response.raise_for_status()
-    response_dict = response.json()
-    bitlink = response_dict['id']
+    response_info = response.json()
+    bitlink = response_info['id']
     return bitlink
 
 
