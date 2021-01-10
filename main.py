@@ -12,8 +12,8 @@ def get_shorten_link(token, url):
     payload = {"long_url": url}
     response = requests.post(bitly, headers=headers, json=payload)
     response.raise_for_status()
-    response_info = response.json()
-    bitlink = response_info['id']
+    bitlink_info = response.json()
+    bitlink = bitlink_info['id']
     return bitlink
 
 
@@ -25,8 +25,8 @@ def count_clicks(token, bitlink):
     headers = {"Authorization": token}
     response = requests.get(bitly, headers=headers)
     response.raise_for_status()
-    response_dict = response.json()
-    clicks_count = response_dict['total_clicks']
+    bitlink_info = response.json()
+    clicks_count = bitlink_info['total_clicks']
     return clicks_count
 
 
